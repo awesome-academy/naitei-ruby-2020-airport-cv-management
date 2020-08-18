@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6">
+      <div class="login-page bg-white shadow rounded p-4">
+        <div class="text-center">
+          <h4 class="mb-4">Đăng Nhập</h4>  
+        </div>
+        <%= form_for :session, url: login_path do |f| %>
+          <%= f.label :email, t(".email") %>
+          <%= f.email_field :email, class: 'form-control' %>
+              
+          <%= f.label :password, t(".password") %>
+          <%= f.password_field :password, class: 'form-control' %>
+
+          <%= f.label :remember_me, class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+            <span><%= t ".remember_me" %></span>
+          <% end %>
+              
+          <%= f.submit t(".log_in"), class: "btn btn-primary w-100" %>
+        <% end %>
+        <p> <%= t ".new_user" %> <%= link_to t(".sign_up_now") %></p>
+      </div>
+    </div>
+  </div> 
+</div>

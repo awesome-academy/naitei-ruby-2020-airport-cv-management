@@ -6,3 +6,13 @@ logo_small: 64
 url:
   placeholder:
     home_image: "https://via.placeholder.com/2000X1333//88929f/5a6270C/O https://placeholder.com/"
+user:
+  name:
+    min_length: 3
+    max_length: 50
+  email:
+    max_length: 255
+    email_regex: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  password:
+    min_length: 6
+  checkbox_value: "1"

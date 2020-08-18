@@ -57,3 +57,9 @@ vi:
           answer: "Bạn đang ở trang tuyển dụng của Tokyo Airport."
         - question: "Tôi phải gửi CV tới ai?"
           answer: "Hãy tạo CV ngay trên trang web này và gửi yêu cầu đến chúng tôi."
+  sessions:
+    new:
+      log_in: Đăng nhập
+      new_user: Tạo tài khoản mới?
+      email: Địa chỉ email
+      password: Mật khẩu

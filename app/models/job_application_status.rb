@@ -1,0 +1,2 @@
+class JobApplicationStatus < ApplicationRecord
+end
