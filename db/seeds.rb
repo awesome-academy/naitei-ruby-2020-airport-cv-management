@@ -10,6 +10,7 @@ JobApplicationStatus.create! id: 1, title: "reviewing"
 JobApplicationStatus.create! id: 2, title: "denied"
 JobApplicationStatus.create! id: 3, title: "interviewing"
 JobApplicationStatus.create! id: 4, title: "accepted"
+JobApplicationStatus.create! id: 5, title: "canceled"
 
 Unit.create! id: 1,
              name: "HR",

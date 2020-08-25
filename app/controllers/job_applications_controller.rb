@@ -1,4 +1,6 @@
 class JobApplicationsController < ApplicationController
+  STATUS_PARAMS = %i(job_application_status_id).freeze
+
   def index
     if current_user.is_recruiter?
       @job_applications = JobApplication.desc_order
@@ -25,7 +27,40 @@ class JobApplicationsController < ApplicationController
     end
   end
 
+  def update
+   if current_user.is_recruiter?
+
+      @job_application = JobApplication.find_by id: params[:id]
+      if @job_application.update status_params
+        flash.now[:success] = t ".success"
+      else
+        flash.now[:error] = t ".error"
+      end
+      respond_to do |format|
+        format.html {}
+        format.js
+      end
+    end
+
+    if current_user.is_candidate?
+
+      @job_application = JobApplication.find_by id: params[:id]
+      if @job_application.update status_params
+        flash.now[:success] = t ".success"
+      else
+        flash.now[:error] = t ".error"
+      end
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
   private
+
+  def status_params
+    params.require(:job_application).permit STATUS_PARAMS
+  end
 
   def candidate_index
     return unless current_user.is_candidate?

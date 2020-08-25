@@ -51,3 +51,8 @@ category:
   per_page: 8
 unit:
   hr: 1
+status:
+  denied: 2
+  interviewing: 3
+  accepted: 4
+  cancel: 5

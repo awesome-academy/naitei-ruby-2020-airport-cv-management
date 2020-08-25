@@ -224,10 +224,14 @@ vi:
     job_application:
       ago: "trước"
       see_details: "Xem chi tiết"
+      submit: "Chuyển trạng thái"
       log_in: "Đăng nhập"
       new_user: "Tạo tài khoản mới?"
       email: "Địa chỉ email"
       password: "Mật khẩu"
+    update:
+      success: "Đã thay đổi trạng thái của đơn xin việc"
+      error: "Không thể thay đổi trạng thái của đơn xin việc"
   send:
     ok: "Gửi thành công "
     error: "Thất bại"

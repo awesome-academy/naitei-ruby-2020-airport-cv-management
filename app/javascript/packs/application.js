@@ -1,4 +1,5 @@
-require('@rails/ujs').start()
+import Rails from '@rails/ujs'
+Rails.start()
 require('turbolinks').start()
 require('@rails/activestorage').start()
 require('channels')

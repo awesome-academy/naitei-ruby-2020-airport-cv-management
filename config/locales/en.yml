@@ -224,10 +224,15 @@ en:
     job_application:
       ago: "ago"
       see_details: "See more details"
+      submit: "Submit"
       log_in: "Login"
       new_user: "New user?"
       email: "Email"
       password: "Password"
+      cancel: "Cancel "
+    update:
+      success: "Changed status of Job Application"
+      error: "Can not change status of Job Application"
   send:
     ok: "Successfully sent"
     error: "Failed!"

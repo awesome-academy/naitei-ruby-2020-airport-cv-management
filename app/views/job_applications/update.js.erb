@@ -1,0 +1,7 @@
+<% flash.each_with_object([]) do |(type, message), flash_messages| %>
+  toastr.<%= type %>('<%= message %>')
+<% end %>
+<% if @job_application.errors.blank? %>
+  $('#status_for_<%= @job_application.id %>').html('<%= @job_application.job_application_status_title %>');
+  $('#form_for_<%= @job_application.id %>').hide();
+<% end %>

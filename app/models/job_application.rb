@@ -7,7 +7,7 @@ class JobApplication < ApplicationRecord
   delegate :title, to: :job_post, prefix: true, allow_nil: true
   delegate :category_title, to: :job_post, prefix: true, allow_nil: true
   delegate :location, to: :job_post, prefix: true, allow_nil: true
-  delegate :title, to: :job_application_status, prefix: true, allow_nil: true
+  delegate :title, :id, to: :job_application_status, prefix: true, allow_nil: true
 
   scope :desc_order, ->{order created_at: :desc}
 end

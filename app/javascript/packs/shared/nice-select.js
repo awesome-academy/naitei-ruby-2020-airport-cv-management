@@ -124,6 +124,8 @@
       $dropdown.find('.current').text(text);
 
       $dropdown.prev('select').val($option.data('value')).trigger('change');
+
+      $(this).parents('div.nice-select').siblings('select.nice-select').val($option.attr('data-value')).trigger('change');
     });
 
     // Keyboard events
