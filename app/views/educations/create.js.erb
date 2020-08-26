@@ -1,0 +1,10 @@
+<% if @education.errors.blank? %>
+  $("#educations_details").html("<%= j render @profile.educations %>");
+  $("#educationModal").modal("hide")
+  $("#educationForm").html("<%= j render "profiles/education_form", education: @new_education %>")
+<% else %>
+  $("#educationForm").html("<%= j render "profiles/education_form", education: @education %>")
+<% end %>
+<% flash.each_with_object([]) do |(type, message), flash_messages| %>
+  toastr.<%= type %>('<%= message %>')
+<% end %>

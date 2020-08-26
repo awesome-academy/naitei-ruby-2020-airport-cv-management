@@ -1,0 +1,73 @@
+<%= form_for education, remote: true do |f| %>
+  <div class="modal-body">
+    <%= hidden_field :education, :profile_id, value: education.profile_id  %>
+    <div class="form-group app-label">
+      <%= f.label :college, class: "text-muted" do %>
+        <%= t ".college" %>
+        <span class="text-danger">*</span>
+      <% end %>
+      <%= f.text_field :college, class: "form-control resume", required: true,
+        maxlength: Settings.validations.education.name.maximum,
+        minlength: Settings.validations.education.name.minimum %>
+      <div class="invalid-feedback" style="display: block;">
+        <%= f.object.errors.full_messages_for(:college).join("\n") %>
+      </div>
+    </div>
+    <div class="form-group app-label">
+      <%= f.label :major, class: "text-muted" do %>
+        <%= t ".major" %>
+        <span class="text-danger">*</span>
+      <% end %>
+      <%= f.text_field :major, class: "form-control resume", required: true,
+        maxlength: Settings.validations.education.name.maximum,
+        minlength: Settings.validations.education.name.minimum %>
+      <div class="invalid-feedback" style="display: block;">
+        <%= f.object.errors.full_messages_for(:major).join("\n") %>
+      </div>
+    </div>
+    <div class="form-group app-label">
+      <%= f.label :date_from, class: "text-muted" do %>
+        <%= t ".date_from" %>
+        <span class="text-danger">*</span>
+      <% end %>
+      <%= f.text_field :date_from, class: "form-control resume", required: true,  data: {provide: :datepicker}, "data-date-format": "yyyy-mm-dd" %>
+      <div class="invalid-feedback" style="display: block;">
+        <%= f.object.errors.full_messages_for(:date_from).join("\n") %>
+      </div>
+    </div>
+    <div class="form-group app-label">
+      <%= f.label :date_to, class: "text-muted" do %>
+        <%= t ".date_to" %>
+        <span class="text-danger">*</span>
+      <% end %>
+      <%= f.text_field :date_to, class: "form-control resume", required: true,  data: {provide: :datepicker}, "data-date-format": "yyyy-mm-dd" %>
+      <div class="invalid-feedback" style="display: block;">
+        <%= f.object.errors.full_messages_for(:date_to).join("\n") %>
+      </div>
+    </div>
+    <div class="form-group app-label">
+      <%= f.label :certification, class: "text-muted" do %>
+        <%= t ".certification" %>
+      <% end %>
+      <%= f.text_field :certification, class: "form-control resume",
+        maxlength: Settings.validations.education.text.maximum,
+        minlength: Settings.validations.education.text.minimum %>
+      <div class="invalid-feedback" style="display: block;">
+        <%= f.object.errors.full_messages_for(:certification).join("\n") %>
+      </div>
+    </div>
+    <div class="form-group app-label">
+      <%= f.label t(".additional_information"), class: "text-muted" %>
+      <%= f.text_area :additional_information, class: "form-control resume",
+        maxlength: Settings.validations.education.text.maximum,
+        minlength: Settings.validations.education.text.minimum %>
+      <div class="invalid-feedback" style="display: block;">
+        <%= f.object.errors.full_messages_for(:additional_information).join("\n") %>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t ".close" %></button>
+    <%= f.submit t(".save_changes"), class: "btn btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<% if @experience.errors.blank? %>
+  $("#experiences_details").html("<%= j render @profile.experiences %>");
+  $("#experienceModal").modal("hide")
+  $("#experienceForm").html("<%= j render "profiles/experience_form", experience: @new_experience %>")
+<% else %>
+  $("#experienceForm").html("<%= j render "profiles/experience_form", experience: @experience %>")
+<% end %>
+<% flash.each_with_object([]) do |(type, message), flash_messages| %>
+  toastr.<%= type %>('<%= message %>')
+<% end %>

@@ -5,7 +5,10 @@ class ProfilesController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @new_education = Education.new profile_id: @profile.id
+    @new_experience = Experience.new profile_id: @profile.id
+  end
 
   def update
     if @profile.update profile_params
