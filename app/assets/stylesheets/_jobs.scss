@@ -39,7 +39,7 @@
 }
 
 a.job-list[data-toggle="collapse"]:before {
-  content: "\f374";
+  content: "＋";
   display: block;
   font-family: "Font Awesome\ 5 Free";
   font-size: 20px;
@@ -51,7 +51,7 @@ a.job-list[data-toggle="collapse"]:before {
 }
 
 a.job-list[data-toggle="collapse"].collapsed:before {
-  content: "\f415";
+  content: "－";
   transition: all 0.5s;
 }
 

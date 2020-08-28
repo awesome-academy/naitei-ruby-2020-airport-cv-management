@@ -18,11 +18,13 @@ vi:
       success: "Đăng thành công công việc"
       error: "Không thể đăng việc"
     index:
+      result: "Kết quả"
       title: "Bài đăng tìm việc"
       find_your_jobs: "Tìm công việc dành cho bạn"
     job_post:
       apply_now: "Gửi hồ sơ"
       note: "Ghi chú: "
+      see: "Xem chi tiết"
     new:
       title: "Đăng tuyển tìm việc"
       post_a_new_job: "Đăng tuyển tìm việc:"
@@ -39,6 +41,14 @@ vi:
       your_job_notification: "Thông báo về công việc của bạn"
       subcribe: "Theo dõi"
       your_email: "Địa chỉ email của bạn"
+    show:
+      title: "Chi tiết công việc"
+      job_description: "Mô tả công việc"
+      job_requirement: "Yêu cầu đối với công việc"
+      salary: "Lương"
+      category: "Danh mục"
+      date_posted: "Ngày đăng"
+      apply: "Đăng kí việc này"
   date:
     formats:
       years: "%Y"
@@ -69,6 +79,10 @@ vi:
         - "T7 : 10:00 ~ 15:00"
         - "CN : Nghỉ"
   shared:
+    search_bar:
+      job_keywords: "Từ khóa..."
+      category: "Danh mục"
+      search: "Tìm kiếm"
     contact_form:
       address: "Handico Tower, Phạm Hùng, Mễ Trì, Nam Từ Liêm, Hà Nội"
       contact_info: "Contact Info"

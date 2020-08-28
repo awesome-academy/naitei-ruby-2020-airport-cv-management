@@ -682,3 +682,10 @@ button:not(:disabled) {
 .dropdown-menu {
   padding: 0.5rem 0.5rem;
 }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}

@@ -1,17 +1,3 @@
-Role.create! id: 1, name: "candidate"
-Role.create! id: 2, name: "recruiter"
-Role.create! id: 3, name: "admin"
-
-Gender.create! id: 1, name: "M"
-Gender.create! id: 2, name: "F"
-Gender.create! id: 3, name: "X"
-
-JobApplicationStatus.create! id: 1, title: "reviewing"
-JobApplicationStatus.create! id: 2, title: "denied"
-JobApplicationStatus.create! id: 3, title: "interviewing"
-JobApplicationStatus.create! id: 4, title: "accepted"
-JobApplicationStatus.create! id: 5, title: "cancelled"
-
 Unit.create! id: 1,
              name: "HR",
              address: Faker::Address.full_address,
@@ -33,7 +19,7 @@ end
                password: password,
                password_confirmation: password,
                unit_id: 1,
-               role_id: 2,
+               roles: 1,
                activated: true,
                activated_at: Time.zone.now
 end
@@ -43,6 +29,7 @@ end
   User.create! email: "example-#{n+1}@airport.org",
                password: password,
                password_confirmation: password,
+               roles: 1,
                activated: true,
                activated_at: Time.zone.now
 end
@@ -67,19 +54,19 @@ end
 100.times do |n|
   JobApplication.create! candidate_id: rand(11..21),
                          recruiter_id: rand(1..10),
-                         job_application_status_id: 1,
+                         status: "reviewing",
                          job_post_id: rand(1..20)
 end
 
 users = User.all
 users.each do |user|
   profile = user.build_profile first_name: Faker::Name.first_name,
-                               last_name: Faker::Name.last_name,
-                               introduction: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false),
-                               date_of_birth: Faker::Date.between(from: '1989-09-23', to: '2002-09-25'),
-                               gender_id: Faker::Number.between(from: 1, to: 3),
-                               address: Faker::Address.full_address,
-                               phone_number: "0987654321"
+                              last_name: Faker::Name.last_name,
+                              introduction: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false),
+                              date_of_birth: Faker::Date.between(from: '1989-09-23', to: '2002-09-25'),
+                              gender: Faker::Number.between(from: 1, to: 3),
+                              address: Faker::Address.full_address,
+                              phone_number: "09#{Faker::Number.unique.number(digits: 8)}"
   profile.save
 end
 

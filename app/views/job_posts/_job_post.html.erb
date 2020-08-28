@@ -1,57 +1,79 @@
-<div class="job-box bg-white overflow-hidden border rounded mt-4 position-relative overflow-hidden">
-  <div class="lable text-center pt-2 pb-2">
-    <ul class="list-unstyled best text-white mb-0 text-uppercase">
-      <li class="list-inline-item"><i class="fas fa-star"></i></li>
-    </ul>
-  </div>
-  <div class="p-4">
-    <div class="row align-items-center">
-      <div class="col-md-2">
-        <div class="mo-mb-2">
-          <img src="<%= Settings.url.placeholder.job %>" alt="" class="img-fluid mx-auto d-block">
+<% if current_page? controller: :static_pages, action: :home %>
+  <div class="job-box bg-white overflow-hidden border rounded mt-4 position-relative overflow-hidden">
+    <div class="lable text-center pt-2 pb-2">
+      <ul class="list-unstyled best text-white mb-0 text-uppercase">
+        <li class="list-inline-item"><i class="fas fa-star"></i></li>
+      </ul>
+    </div>
+    <div class="p-4">
+      <div class="row align-items-center">
+        <div class="col-md-2">
+          <div class="mo-mb-2">
+            <img src="<%= Settings.url.placeholder.job %>" alt="" class="img-fluid mx-auto d-block">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div>
+            <h5><%= link_to job_post.title, job_post_path(job_post), class: "text-dark" %></h5>
+            <p class="text-muted mb-0"><%= job_post.unit_name %></p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div>
+            <p class="text-muted mb-0"><i class="fas fa-map-marker text-primary mr-2"></i><%= job_post.location %></p>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div>
+            <p class="text-muted mb-0 mo-mb-2"><span class="text-primary">$</span><%= job_post.salary_from %>-<%= job_post.salary_to %>/m</p>
+          </div>
         </div>
       </div>
-      <div class="col-md-3">
-        <div>
-          <h5><%= link_to job_post.title, job_posts_path(job_post), class: "text-dark" %></h5>
-          <p class="text-muted mb-0"><%= job_post.unit_name %></p>
+    </div>
+    <div class="p-3 bg-light">
+      <div class="row">
+        <div class="col-md-4">
+          <div>
+            <p class="text-muted mb-0 mo-mb-2"><span class="text-dark"></span></p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div>
-          <p class="text-muted mb-0"><i class="fas fa-map-marker text-primary mr-2"></i><%= job_post.location %></p>
+        <div class="col-md-9">
+          <div>
+            <p class="text-muted mb-0 mo-mb-2"><span class="text-dark"><%= t ".note" %></span><%= job_post.note %></p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-2">
-        <div>
-          <p class="text-muted mb-0 mo-mb-2"><span class="text-primary">$</span><%= job_post.salary_from %>-<%= job_post.salary_to %>/m</p>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <%= form_with url: job_applications_path, method: :post do %>
-          <%= hidden_field_tag :id, job_post.id %>
-          <%= submit_tag t "btn.apply" %>
-        <% end %>
-      </div>
-      <div class="col-md-2">
-        <div>
-          <p class="text-muted mb-0"></p>
+        <div class="col-md-2">
+          <%= link_to t(".see"), job_post_path(job_post), class: "text-dark float-right" %>
         </div>
       </div>
     </div>
   </div>
-  <div class="p-3 bg-light">
-    <div class="row">
-      <div class="col-md-4">
-        <div>
-          <p class="text-muted mb-0 mo-mb-2"><span class="text-dark"></span></p>
+<% else %>
+  <div class="job-list-box border rounded mt-4 mb-2">
+    <div class="p-3">
+      <div class="row align-items-center">
+        <div class="col-lg-2">
+          <div class="company-logo-img">
+            <img src="<%= Settings.url.placeholder.job %>" alt="" class="img-fluid mx-auto d-block">
+          </div>
         </div>
-      </div>
-      <div class="col-md-9">
-        <div>
-          <p class="text-muted mb-0 mo-mb-2"><span class="text-dark"><%= t ".note" %></span><%= job_post.note %></p>
+        <div class="col-lg-10 col-md-9">
+          <div class="job-list-desc">
+            <h6 class="mb-2">
+              <%= link_to job_post.title, Settings.empty_path, class: "text-dark" %>
+            </h6>
+            <p class="text-muted mb-0"><i class="fas fa-university mr-2"></i></i><%= job_post.category_title %></p>
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mr-3">
+                <p class="text-muted mb-0"><i class="fas fa-map-marker-alt mr-2"></i></i><%= job_post.location %></p>
+              </li>
+              <li class="list-inline-item">
+                <p class="text-muted mb-0"><i class="fas fa-clock mr-2"></i><%= time_ago_in_words job_post.created_at %> <%= t ".ago" %></p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

@@ -76,7 +76,6 @@ build-iPhoneSimulator/
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-/config/database.yml
 /config/settings.local.yml
 /config/settings/*.local.yml
 /config/environments/*.local.yml
@@ -87,10 +86,6 @@ build-iPhoneSimulator/
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-
-spec
-!spec/rails_helper.rb
-!spes/spec_helper.rb
 
 /config/application.yml
 /config/settings.local.yml

@@ -20,12 +20,16 @@ validations:
     password_maxlength: 15
     ava_size: 80
     password_reset_expired: 2
+    default_password: "123456"
   job_post:
     title_min: 5
+    title_max: 255
     number_min: 2
-    max: 2147483647
+    number_max: 10
     content_min: 10
-    zero: 0
+    content_max: 2000
+    min: 0
+    max: 2147483647
   profile:
     first_name:
       minimum: 1
@@ -58,6 +62,8 @@ user:
   checkbox_value: "1"
 job_applications:
   per_page: 5
+job_posts:
+  per_page: 10
 role:
   candidate: 1
   recruiter: 2
@@ -68,7 +74,8 @@ category:
 unit:
   hr: 1
 status:
-  denied: 2
-  interviewing: 3
-  accepted: 4
-  cancel: 5
+  reviewing: "reviewing"
+  denied: "denied"
+  interviewing: "interviewing"
+  accepted: "accepted"
+  cancel: "cancelled"

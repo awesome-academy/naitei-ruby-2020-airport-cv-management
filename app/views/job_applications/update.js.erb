@@ -3,7 +3,7 @@
 <% end %>
 <% if @job_application.errors.blank? %>
   $('#status_for_<%= @job_application.id %>')
-    .attr("class", "ml-2 badge badge-<%= @job_application.job_application_status_title %>")
-    .html('<%= @job_application.job_application_status_title %>');
+    .attr("class", "ml-2 badge badge-<%= @job_application.status %>")
+    .html('<%= @job_application.status %>');
   $('#form_for_<%= @job_application.id %>').hide();
 <% end %>

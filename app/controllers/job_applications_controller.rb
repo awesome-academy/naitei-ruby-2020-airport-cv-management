@@ -1,12 +1,13 @@
 class JobApplicationsController < ApplicationController
-  STATUS_PARAMS = %i(job_application_status_id).freeze
+  STATUS_PARAMS = %i(status).freeze
 
   def index
-    if current_user.is_recruiter?
+    if current_user.recruiter?
       @job_applications = JobApplication.desc_order
                                         .page(params[:page])
                                         .per Settings.job_applications.per_page
     else
+
       candidate_index
     end
     respond_to do |format|
@@ -29,7 +30,7 @@ class JobApplicationsController < ApplicationController
 
   def update
     @job_application = JobApplication.find_by id: params[:id]
-    update_status if current_user&.is_recruiter? || (current_user.eql? @job_application&.candidate)
+    update_status if current_user.recruiter? || (current_user.eql? @job_application&.candidate)
   end
 
   private
@@ -39,12 +40,12 @@ class JobApplicationsController < ApplicationController
   end
 
   def candidate_index
-    return unless current_user.is_candidate?
+    return unless current_user.candidate?
 
     @job_applications = current_user.job_applications
                                     .desc_order
                                     .page(params[:page])
-                                    .per Settings.job_applications.per_page
+                                    .per(Settings.job_applications.per_page)
   end
 
   def update_status

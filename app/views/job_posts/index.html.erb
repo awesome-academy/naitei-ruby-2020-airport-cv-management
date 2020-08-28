@@ -1,54 +1,24 @@
 <% provide :title, t(".title") %>
 <%= render "shared/start" %>
-<section class="section bg-light">
+<%= render "shared/search_bar", q: @q %>
+<section class="section pt-0">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="section-title text-center mb-4 pb-2">
-          <h4 class="title title-line pb-5"><%= t ".find_your_jobs" %></h4>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="tab-content mt-2" id="pills-tabContent">
-          <div class="tab-pane fade show active" id="recent-job" role="tabpanel" aria-labelledby="recent-job-tab">
-            <div class="row">
-              <div class="col-lg-12">
-                  <%= render @job_posts %>
+      <div class="col-lg-9 mt-4 pt-2">
+        <div class="row align-items-center">
+          <div class="col-lg-12">
+            <div class="show-results">
+              <div class="float-left">
+                <h5 class="text-dark mb-0 pt-2 f-18"><%= pluralize @q.result.size, t(".result") %></h5>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <!-- end row -->
-    <!-- end row -->
-    <div class="row">
-      <div class="col-lg-12 mt-4 pt-2">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination job-pagination mb-0 justify-content-center">
-            <li class="page-item disabled">
-              <%= link_to Settings.empty_path, class: "page-link", tabindex: "-1", "aria-disabled": true do %>
-                <i class="fa fa-chevron-left f-15"></i>
-              <% end %>
-            </li>
-            <li class="page-item active">
-              <%= link_to "1", Settings.empty_path, class: "page-link" %>
-            </li>
-            <li class="page-item">
-              <%= link_to "2", Settings.empty_path, class: "page-link" %>
-            </li>
-            <li class="page-item">
-              <%= link_to Settings.empty_path, class: "page-link" do %>
-                <i class="fa fa-chevron-right f-15"></i>
-              <% end %>
-            </li>
-          </ul>
-        </nav>
+        <%= render @job_posts %>
+        <div id="paginator" class="col-lg-12 mt-4 pt-2">
+          <%= paginate @job_posts %>
+        </div>
       </div>
     </div>
   </div>
-  <!-- end containar -->
 </section>
-<!-- all jobs end -->

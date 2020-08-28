@@ -13,6 +13,7 @@ gem "mysql2", ">= 0.4.4"
 gem "puma", "~> 4.1"
 gem "rails", "~> 6.0.3", ">= 6.0.3.2"
 gem "rails-i18n", "~> 6.0.0"
+gem "ransack"
 gem "sass-rails", ">= 6"
 gem "sprockets-rails", "2.3.3"
 gem "turbolinks", "~> 5"
@@ -20,8 +21,10 @@ gem "webpacker", "~> 5.0"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "factory_bot_rails"
   gem "pry-rails"
   gem "rails_best_practices"
+  gem "rails-controller-testing"
   gem "reek"
   gem "rspec-rails"
   gem "rubocop", require: false
@@ -37,7 +40,10 @@ end
 
 group :test do
   gem "capybara", ">= 2.15"
+  gem "database_cleaner-active_record"
   gem "selenium-webdriver"
+  gem "shoulda-matchers"
+  gem "simplecov", require: false
   gem "webdrivers"
 end
 

@@ -11,6 +11,30 @@
               </div>
               <%= form_for @user, class: "login-form" do |f| %>
                 <div class="row">
+                  <%= f.fields_for :profile do |ff| %>
+                    <div class="col-md-6">
+                      <div class="form-group position-relative">
+                        <%= ff.label :first_name do %>
+                          <%= t ".first_name" %><span class="text-danger"> *</span>
+                        <% end %>
+                        <%= ff.text_field :first_name, class: "form-control", required: true %>
+                        <div class="invalid-feedback" style="display: block;">
+                          <%= ff.object.errors.full_messages_for(:first_name).join("\n") %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group position-relative">
+                        <%= ff.label :last_name do %>
+                          <%= t ".last_name" %><span class="text-danger"> *</span>
+                        <% end %>
+                        <%= ff.text_field :last_name, class: "form-control", required: true %>
+                        <div class="invalid-feedback" style="display: block;">
+                          <%= ff.object.errors.full_messages_for(:last_name).join("\n") %>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
                   <div class="col-md-12">
                     <div class="form-group position-relative">
                       <%= f.label :email do %>

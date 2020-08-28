@@ -5,9 +5,11 @@
     <p class="pb-3 mb-0"><%= education.major %></p>
     <p class="pt-3 border-top mb-0"><%= education.additional_information %></p>
     <p class="pt-3 mb-0"><%= education.certification %></p>
-    <% unless current_page? controller: :profiles, action: :show %>
-      <%= form_for education, method: :delete, remote: true do |f| %>
-        <%= f.submit t(".delete"), class: "btn btn-sm text-danger" %>
+    <% unless current_page? controller: :profiles, action: :show  %>
+      <% if education.profile.user == current_user %>
+        <%= form_for education, method: :delete, remote: true do |f| %>
+          <%= f.submit t(".delete"), class: "btn btn-sm text-danger" %>
+        <% end %>
       <% end %>
     <% end %>
   </div>

@@ -12,13 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2020_08_21_064444) do
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "educations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "educations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "college"
     t.string "major"
     t.date "date_from"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_064444) do
     t.index ["profile_id"], name: "index_educations_on_profile_id"
   end
 
-  create_table "experiences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "experiences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "company_name"
     t.string "job_position"
     t.date "date_from"
@@ -43,32 +43,19 @@ ActiveRecord::Schema.define(version: 2020_08_21_064444) do
     t.index ["profile_id"], name: "index_experiences_on_profile_id"
   end
 
-  create_table "genders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "job_application_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "job_applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "job_applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "candidate_id"
     t.bigint "recruiter_id"
-    t.bigint "job_application_status_id", default: 1, null: false
     t.bigint "job_post_id", null: false
+    t.string "status", default: "reviewing"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["candidate_id"], name: "index_job_applications_on_candidate_id"
-    t.index ["job_application_status_id"], name: "index_job_applications_on_job_application_status_id"
     t.index ["job_post_id"], name: "index_job_applications_on_job_post_id"
     t.index ["recruiter_id"], name: "index_job_applications_on_recruiter_id"
   end
 
-  create_table "job_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "job_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "title"
     t.string "location"
     t.integer "salary_from"
@@ -87,7 +74,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_064444) do
     t.index ["user_id"], name: "index_job_posts_on_user_id"
   end
 
-  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "sender_id"
     t.bigint "receiver_id"
     t.text "message"
@@ -99,29 +86,21 @@ ActiveRecord::Schema.define(version: 2020_08_21_064444) do
     t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
 
-  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.text "introduction"
     t.date "date_of_birth"
-    t.bigint "gender_id", default: 3, null: false
     t.text "address"
     t.string "phone_number"
     t.bigint "user_id", null: false
+    t.integer "gender", default: 3
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["gender_id"], name: "index_profiles_on_gender_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "units", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "units", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.string "email"
@@ -131,10 +110,10 @@ ActiveRecord::Schema.define(version: 2020_08_21_064444) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
-    t.bigint "role_id", default: 1, null: false
+    t.integer "roles", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "remember_digest"
@@ -144,13 +123,11 @@ ActiveRecord::Schema.define(version: 2020_08_21_064444) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.bigint "unit_id"
-    t.index ["role_id"], name: "index_users_on_role_id"
     t.index ["unit_id"], name: "index_users_on_unit_id"
   end
 
   add_foreign_key "educations", "profiles"
   add_foreign_key "experiences", "profiles"
-  add_foreign_key "job_applications", "job_application_statuses"
   add_foreign_key "job_applications", "job_posts"
   add_foreign_key "job_applications", "users", column: "candidate_id"
   add_foreign_key "job_applications", "users", column: "recruiter_id"
@@ -160,8 +137,6 @@ ActiveRecord::Schema.define(version: 2020_08_21_064444) do
   add_foreign_key "notifications", "job_posts"
   add_foreign_key "notifications", "users", column: "receiver_id"
   add_foreign_key "notifications", "users", column: "sender_id"
-  add_foreign_key "profiles", "genders"
   add_foreign_key "profiles", "users"
-  add_foreign_key "users", "roles"
   add_foreign_key "users", "units"
 end

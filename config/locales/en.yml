@@ -18,11 +18,13 @@ en:
       success: "Successed post a job"
       error: "Can not post a job"
     index:
+      result: "result"
       title: "Job Posts"
       find_your_jobs: "Find Your Jobs"
     job_post:
       apply_now: "Apply Now"
       note: "Notes: "
+      see: "See more details"
     new:
       title: "New Job Post"
       post_a_new_job: "Post a new job: "
@@ -39,6 +41,14 @@ en:
       your_job_notification: "Your Job Notification"
       subcribe: "Subcribe"
       your_email: "Your email"
+    show:
+      title: "Job Post Details"
+      job_description: "Job Description"
+      job_requirement: "Job Requirement"
+      salary: "Salary"
+      category: "Category"
+      date_posted: "Date Posted"
+      apply: "Apply this job"
   date:
     formats:
       years: "%Y"
@@ -69,6 +79,10 @@ en:
         - "Saturday : 10:00 to 15:00"
         - "Sunday : Day Off (Holiday)"
   shared:
+    search_bar:
+      job_keywords: "Job keywords..."
+      category: "Category"
+      search: "Search"
     contact_form:
       address: "Handico Tower, Phạm Hùng, Mễ Trì, Nam Từ Liêm, Hà Nội"
       contact_info: "Contact Info"
