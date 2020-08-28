@@ -1,0 +1,6 @@
+<% flash.each_with_object([]) do |(type, message), flash_messages| %>
+  toastr.<%= type %>('<%= message %>')
+<% end %>
+<% if @education.errors.blank? %>
+  $('#education_item_<%= @education.id %>').hide();
+<% end %>

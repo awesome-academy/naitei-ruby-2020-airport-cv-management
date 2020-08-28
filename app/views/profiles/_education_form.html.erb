@@ -57,7 +57,9 @@
       </div>
     </div>
     <div class="form-group app-label">
-      <%= f.label t(".additional_information"), class: "text-muted" %>
+      <%= f.label :additional_information, class: "text-muted" do %>
+        <%= t ".additional_information" %>
+      <% end %>
       <%= f.text_area :additional_information, class: "form-control resume",
         maxlength: Settings.validations.education.text.maximum,
         minlength: Settings.validations.education.text.minimum %>

@@ -1,2 +1,10 @@
 $("#job_applications").html("<%= j render(@job_applications) %>");
 $("#paginator").html("<%= j paginate(@job_applications, remote: true) %>");
+$('select.nice-select').niceSelect();
+$('select.nice-select').niceSelect();
+$('li.option').on('click', function(event) {
+  $(this).parents('div.nice-select').siblings('select.nice-select').val($(this).attr('data-value'))
+  const form = $(this).closest("form")[0];
+
+  Rails.fire(form, 'submit');
+});

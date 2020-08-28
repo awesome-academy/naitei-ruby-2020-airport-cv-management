@@ -2,6 +2,8 @@
   toastr.<%= type %>('<%= message %>')
 <% end %>
 <% if @job_application.errors.blank? %>
-  $('#status_for_<%= @job_application.id %>').html('<%= @job_application.job_application_status_title %>');
+  $('#status_for_<%= @job_application.id %>')
+    .attr("class", "ml-2 badge badge-<%= @job_application.job_application_status_title %>")
+    .html('<%= @job_application.job_application_status_title %>');
   $('#form_for_<%= @job_application.id %>').hide();
 <% end %>

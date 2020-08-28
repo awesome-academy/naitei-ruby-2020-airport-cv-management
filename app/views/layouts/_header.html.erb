@@ -66,8 +66,6 @@
             <ul class="submenu">
               <% if current_user.profile %>
                 <li><%= link_to t(".my_profile"), profile_path(current_user.profile) %></li>
-              <% else %>
-                <li><%= link_to t(".my_profile"), new_profile_path %></li>
               <% end %>
               <li><%= link_to t(".job_applications_history"), job_applications_path %></li>
             </ul>

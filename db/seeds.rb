@@ -10,7 +10,7 @@ JobApplicationStatus.create! id: 1, title: "reviewing"
 JobApplicationStatus.create! id: 2, title: "denied"
 JobApplicationStatus.create! id: 3, title: "interviewing"
 JobApplicationStatus.create! id: 4, title: "accepted"
-JobApplicationStatus.create! id: 5, title: "canceled"
+JobApplicationStatus.create! id: 5, title: "cancelled"
 
 Unit.create! id: 1,
              name: "HR",
@@ -71,7 +71,7 @@ end
                          job_post_id: rand(1..20)
 end
 
-users = User.where(role_id: 1).take 6
+users = User.all
 users.each do |user|
   profile = user.build_profile first_name: Faker::Name.first_name,
                                last_name: Faker::Name.last_name,
@@ -79,7 +79,7 @@ users.each do |user|
                                date_of_birth: Faker::Date.between(from: '1989-09-23', to: '2002-09-25'),
                                gender_id: Faker::Number.between(from: 1, to: 3),
                                address: Faker::Address.full_address,
-                               phone_number: Faker::PhoneNumber.cell_phone_in_e164
+                               phone_number: "0987654321"
   profile.save
 end
 

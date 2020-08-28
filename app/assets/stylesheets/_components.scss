@@ -361,19 +361,24 @@ button:not(:disabled) {
   &.badge-danger,
   &.badge-info,
   &.badge-warning,
+  &.badge-interviewing,
+  &.badge-accepted,
+  &.badge-cancelled,
+  &.badge-reviewing,
+  &.badge-dinied,
   &.badge-dark {
     color: $white !important;
   }
-  &.badge-primary {
+  &.badge-primary, &.badge-interviewing {
     background-color: $primary !important;
   }
   &.badge-secondary {
     background-color: $secondary !important;
   }
-  &.badge-success {
+  &.badge-success, &.badge-accepted {
     background-color: $success !important;
   }
-  &.badge-danger {
+  &.badge-danger, &.badge-cancelled {
     background-color: $danger !important;
   }
   &.badge-warning {
@@ -386,8 +391,11 @@ button:not(:disabled) {
     color: $dark;
     background-color: $light !important;
   }
-  &.badge-dark {
+  &.badge-dark, &.badge-dinied {
     background-color: $dark !important;
+  }
+  &.badge-reviewing {
+    background-color: $reviewing !important;
   }
 }
 

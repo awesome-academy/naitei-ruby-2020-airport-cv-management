@@ -1,6 +1,13 @@
-<div class="col-md-12 mt-3 mt-md-0 pt-3">
+<div id="experience_item_<%= experience.id %>" class="col-md-12 mt-3 mt-md-0 pt-3">
   <div class="border rounded job-list-box p-4">
     <div class="job-list-desc candidates-profile-exp-desc">
+      <div>
+      <% unless current_page?(controller: :profiles, action: :show) %>
+        <%= form_for experience, method: :delete, remote: true do |f| %>
+          <%= f.submit t(".delete"), class:"btn mr-2 btn-sm text-danger float-right" %>
+        <% end %>
+      <% end %>
+      </div>
       <h5 class="f-19 mb-2 text-dark"><%= experience.company_name %></h5>
       <p class="text-muted mb-0 f-16"><i class="fa fa-briefcase mr-2"></i><%= experience.job_position %></p>
       <p class="text-muted mb-0 f-16"><i class="fas fa-calendar-alt mr-2"></i><%= "#{l experience.date_from, format: :long} ~ #{l experience.date_to, format: :long}" %></p>

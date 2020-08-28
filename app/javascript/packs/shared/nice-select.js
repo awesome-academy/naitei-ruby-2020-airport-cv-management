@@ -5,6 +5,8 @@
 (function ($) {
 
   $.fn.niceSelect = function (method) {
+    // Unbind existing events in case that the plugin has been initialized before
+    $(document).off('click', 'div.nice-select');
 
     // Methods
     if (typeof method == 'string') {
@@ -34,7 +36,7 @@
           }
         });
         if ($('.nice-select').length == 0) {
-          $(document).off('.nice_select');
+          $(document).off('');
         }
       } else {
         console.log('Method "' + method + '" does not exist.')
@@ -86,11 +88,9 @@
 
     /* Event listeners */
 
-    // Unbind existing events in case that the plugin has been initialized before
-    $(document).off('.nice_select');
 
     // Open/close
-    $(document).on('click.nice_select', '.nice-select', function (event) {
+    $(document).on('click', '.nice-select', function (event) {
       var $dropdown = $(this);
 
       $('.nice-select').not($dropdown).removeClass('open');
@@ -106,14 +106,14 @@
     });
 
     // Close when clicking outside
-    $(document).on('click.nice_select', function (event) {
+    $(document).on('click', function (event) {
       if ($(event.target).closest('.nice-select').length === 0) {
         $('.nice-select').removeClass('open').find('.option');
       }
     });
 
     // Option click
-    $(document).on('click.nice_select', '.nice-select .option:not(.disabled)', function (event) {
+    $(document).on('click', '.nice-select .option:not(.disabled)', function (event) {
       var $option = $(this);
       var $dropdown = $option.closest('.nice-select');
 
@@ -129,7 +129,7 @@
     });
 
     // Keyboard events
-    $(document).on('keydown.nice_select', '.nice-select', function (event) {
+    $(document).on('keydown', '.nice-select', function (event) {
       var $dropdown = $(this);
       var $focused_option = $($dropdown.find('.focus') || $dropdown.find('.list .option.selected'));
 

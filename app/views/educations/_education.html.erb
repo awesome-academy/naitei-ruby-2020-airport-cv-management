@@ -1,9 +1,14 @@
-<div class="col-lg-6 mt-3">
-  <div class="border rounded py-4 px-5 text-center text-muted">
+<div id="education_item_<%= education.id %>" class="col-lg-6 mt-3">
+  <div class="border rounded pt-4 px-5 text-center text-muted <%= "pb-4" unless current_page? controller: :profiles, action: :edit  %>">
     <h6 class="text-uppercase f-17 text-muted"><%= education.college %></h6>
     <p class="f-14 mb-1"><%= "#{l education.date_from, format: :years} ~ #{l education.date_to, format: :years}" %></p>
     <p class="pb-3 mb-0"><%= education.major %></p>
     <p class="pt-3 border-top mb-0"><%= education.additional_information %></p>
     <p class="pt-3 mb-0"><%= education.certification %></p>
+    <% unless current_page? controller: :profiles, action: :show %>
+      <%= form_for education, method: :delete, remote: true do |f| %>
+        <%= f.submit t(".delete"), class: "btn btn-sm text-danger" %>
+      <% end %>
+    <% end %>
   </div>
 </div>

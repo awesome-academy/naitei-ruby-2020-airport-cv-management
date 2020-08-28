@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :profile
 
-  delegate :full_name, :introduction, to: :profile, allow_nil: true
+  delegate :full_name, :introduction, :phone_number, to: :profile, allow_nil: true
   delegate :id, to: :role, prefix: true, allow_nil: true
   delegate :id, to: :unit, prefix: true, allow_nil: true
 

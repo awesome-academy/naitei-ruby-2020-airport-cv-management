@@ -227,6 +227,9 @@ vi:
       date_from: "Từ ngày"
       date_to: "Đến ngày"
       certification: "Chứng chỉ"
+      additional_information: "Thông tin thêm"
+      save_changes: "Lưu"
+      close: "Hủy"
     experience_modal:
       add: "Thêm"
       experience: "Kinh nghiệm"
@@ -249,6 +252,7 @@ vi:
       new_user: "Tạo tài khoản mới?"
       email: "Địa chỉ email"
       password: "Mật khẩu"
+      cancel: "Hủy "
     update:
       success: "Đã thay đổi trạng thái của đơn xin việc"
       error: "Không thể thay đổi trạng thái của đơn xin việc"
@@ -261,7 +265,17 @@ vi:
     create:
       success: "Thêm thành công"
       error: "Có lỗi xảy ra"
+    education:
+      delete: "Xóa"
+    destroy:
+      success: "Xóa thành công"
+      error: "Có lỗi xảy ra"
   experiences:
     create:
       success: "Thêm thành công"
       error: "Có lỗi xảy ra"
+    destroy:
+      success: "Đã xóa 1 thông tin kinh nghiệm"
+      error: "Xóa bị lỗi"
+    experience:
+      delete: "Xóa"

@@ -1,5 +1,6 @@
 class ExperiencesController < ApplicationController
-  before_action :correct_user
+  before_action :correct_user, only: :create
+  before_action :load_experience, only: %i(destroy update)
 
   def create
     @experience = Experience.new experience_params
@@ -17,7 +18,16 @@ class ExperiencesController < ApplicationController
 
   def update; end
 
-  def destroy; end
+  def destroy
+    if @experience.destroy
+      flash.now[:success] = t ".success"
+    else
+      flash.now[:error] = t ".error"
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
 
   private
 
@@ -32,5 +42,15 @@ class ExperiencesController < ApplicationController
 
     flash[:error] = t ".error"
     redirect_to root_path
+  end
+
+  def load_experience
+    @experience = Experience.find_by id: params[:id]
+    return if @experience && current_user && current_user.eql?(@experience.profile_user)
+
+    flash.now[:error] = t ".not_found"
+    respond_to do |format|
+      format.js
+    end
   end
 end

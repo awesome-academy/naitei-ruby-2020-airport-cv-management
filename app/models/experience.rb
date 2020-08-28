@@ -2,6 +2,8 @@ class Experience < ApplicationRecord
   EXPERIENCE_PARAMS = %i(company_name job_position date_from date_to additional_information profile_id).freeze
   belongs_to :profile
 
+  delegate :user, to: :profile, prefix: true, allow_nil: true
+
   validates :company_name, presence: true,
     length: {minimum: Settings.validations.experience.company_name.minimum,
              maximum: Settings.validations.experience.company_name.maximum}

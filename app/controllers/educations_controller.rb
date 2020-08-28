@@ -1,5 +1,6 @@
 class EducationsController < ApplicationController
-  before_action :correct_user
+  before_action :correct_user, only: :create
+  before_action :load_education, only: %i(update destroy)
 
   def create
     @education = Education.new education_params
@@ -17,7 +18,17 @@ class EducationsController < ApplicationController
 
   def update; end
 
-  def destroy; end
+  def destroy
+    if @education.destroy
+      flash.now[:success] = t ".success"
+    else
+      flash.now[:error] = t ".error"
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
 
   private
 
@@ -32,5 +43,15 @@ class EducationsController < ApplicationController
 
     flash[:error] = t ".error"
     redirect_to root_path
+  end
+
+  def load_education
+    @education = Education.find_by id: params[:id]
+    return if @education && current_user && current_user.eql?(@education.profile_user)
+
+    flash.now[:error] = t ".not_found"
+    respond_to do |format|
+      format.js
+    end
   end
 end
