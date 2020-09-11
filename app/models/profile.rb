@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-  PROFILE_PARAMS = %i(first_name last_name introduction date_of_birth gender address phone_number file) \
+  PROFILE_PARAMS = %i(first_name last_name introduction date_of_birth gender address phone_number file image) \
     << {educations_attributes: %i(id college major date_from date_to certification additional_information _destroy)} \
     << {experiences_attributes: %i(id company_name job_position date_from date_to additional_information _destroy)}
   VALID_PHONE_NUMBER_REGEX = Settings.validations.profile.phone_number
@@ -8,6 +8,7 @@ class Profile < ApplicationRecord
   has_many :educations, dependent: :destroy
   has_many :experiences, dependent: :destroy
   has_one_attached :file
+  has_one_attached :image
 
   accepts_nested_attributes_for :educations, :experiences, allow_destroy: true, reject_if: :all_blank
 

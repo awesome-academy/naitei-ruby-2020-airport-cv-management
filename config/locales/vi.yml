@@ -246,6 +246,7 @@ vi:
       save_changes: "Lưu"
       close: "Hủy"
       cv_doc_pdf: "Đăng tệp CV có sẵn định dạng DOC, PDF hoặc Zip"
+      image: "Cập nhập ảnh mới"
     education_modal:
       add: "Thêm"
       education: "Học vấn"

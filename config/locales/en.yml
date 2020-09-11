@@ -246,6 +246,7 @@ en:
       save_changes: "Save changes"
       close: "Close"
       cv_doc_pdf: "Upload file CV type DOC, PDF or Zip"
+      image: "Upload new profile picture"
     education_modal:
       add: "Add"
       education: "Education"

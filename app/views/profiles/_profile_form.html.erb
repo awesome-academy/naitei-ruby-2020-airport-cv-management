@@ -84,6 +84,13 @@
         <%= f.object.errors.full_messages_for(:file).join("\n") %>
       </div>
     </div>
+    <div class="form-group app-label">
+      <%= f.label t(".image"), class: "text-muted" %>
+      <%= f.file_field :image,
+        direct_upload: true,
+        accept: "application/jgp,
+                 application/jpeg," %>
+    </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t ".close" %></button>

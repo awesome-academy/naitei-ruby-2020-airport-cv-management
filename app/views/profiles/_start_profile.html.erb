@@ -5,7 +5,11 @@
       <div class="col-md-6">
         <div class="candidates-profile-details text-center">
           <% if profile %>
-            <img src="<%= Settings.url.placeholder.avatar %>" height="150" alt="" class="d-block mx-auto shadow rounded-pill mb-4">
+            <% if profile.image.attached? %>
+              <%= image_tag url_for(profile.image) , height:"150", alt:"", class:"d-block mx-auto shadow rounded-pill mb-4"%>
+            <% else %>
+              <img src="<%= Settings.url.placeholder.avatar %>" height="150" alt="" class="d-block mx-auto sh%%adow rounded-pill mb-4">
+            <% end %>
             <h5 class="text-white mb-2">
               <%= profile.full_name %>
             </h5>
